@@ -24,6 +24,7 @@ function App() {
               id: index,
               img,
               msg: facts[index],
+              isLiked: false,
             }));
           store.dispatch(actions.addCards(dogInfo));
         });

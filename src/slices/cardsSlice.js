@@ -9,6 +9,12 @@ const slice = createSlice({
   reducers: {
     addCards: cardsAdapter.addMany,
     removeCard: cardsAdapter.removeOne,
+    addToFavourites: (state, { payload }) => {
+      cardsAdapter.updateOne(state, { id: payload, changes: { isLiked: true } });
+    },
+    removeFromFavourites: (state, { payload }) => {
+      cardsAdapter.updateOne(state, { id: payload, changes: { isLiked: false } });
+    },
   },
 });
 
