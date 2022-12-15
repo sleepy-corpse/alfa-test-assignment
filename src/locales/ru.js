@@ -1,5 +1,6 @@
 export default {
   translation: {
-    test: 'Hello',
+    title: 'Random dog #{{count}}',
+    subheader: 'And a random fact',
   },
 };
