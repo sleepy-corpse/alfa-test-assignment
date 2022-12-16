@@ -5,8 +5,9 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import store from './slices/index';
 import { actions } from './slices/cardsSlice';
-import ru from './locales/ru';
+import en from './locales/en';
 import CardList from './components/CardList';
+import Header from './components/Header';
 
 function App() {
   useEffect(() => {
@@ -39,13 +40,14 @@ function App() {
     .use(initReactI18next)
     .init({
       resources: {
-        ru,
+        en,
       },
-      lng: 'ru',
+      lng: 'en',
     });
 
   return (
     <Provider store={store}>
+      <Header />
       <CardList />
     </Provider>
   );
