@@ -71,7 +71,7 @@ export default function CardList() {
 
   return (
     <Container maxWidth="lg" sx={{ mt: 5 }}>
-      <FormGroup sx={{ mb: 2 }}>
+      <FormGroup sx={{ mb: 2, width: '230px' }}>
         <FormControlLabel
           control={<Switch inputRef={switchRef} color="error" onChange={toggleFilter} />}
           label={t('filterSwitch')}
