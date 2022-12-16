@@ -12,26 +12,22 @@ import Header from './components/Header';
 function App() {
   useEffect(() => {
     const fetchData = () => {
-      try {
-        const imgResponse = axios.get('https://dog.ceo/api/breeds/image/random/9');
-        const factsResponse1 = axios.get('https://dogapi.dog/api/v2/facts?limit=5'); // this api have a limit of 5 facts per request
-        const factsResponse2 = axios.get('https://dogapi.dog/api/v2/facts?limit=4');
-        Promise.all([imgResponse, factsResponse1, factsResponse2]).then((values) => {
-          const facts = [...values[1].data.data, ...values[2].data.data]
-            .map((fact) => fact.attributes.body);
-          const imgs = values[0];
-          const dogInfo = imgs.data.message.map((img, index) => (
-            {
-              id: index,
-              img,
-              msg: facts[index],
-              isLiked: false,
-            }));
-          store.dispatch(actions.addCards(dogInfo));
-        });
-      } catch (error) {
-        console.log(error);
-      }
+      const imgResponse = axios.get('https://dog.ceo/api/breeds/image/random/9');
+      const factsResponse1 = axios.get('https://dogapi.dog/api/v2/facts?limit=5'); // this api have a limit of 5 facts per request
+      const factsResponse2 = axios.get('https://dogapi.dog/api/v2/facts?limit=4');
+      Promise.all([imgResponse, factsResponse1, factsResponse2]).then((values) => {
+        const facts = [...values[1].data.data, ...values[2].data.data]
+          .map((fact) => fact.attributes.body);
+        const imgs = values[0];
+        const dogInfo = imgs.data.message.map((img, index) => (
+          {
+            id: index,
+            img,
+            msg: facts[index],
+            isLiked: false,
+          }));
+        store.dispatch(actions.addCards(dogInfo));
+      });
     };
     fetchData();
   }, []);

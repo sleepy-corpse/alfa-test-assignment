@@ -14,16 +14,18 @@ import FormGroup from '@mui/material/FormGroup';
 import Tooltip from '@mui/material/Tooltip';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-import { Snackbar } from '@mui/material';
+import Snackbar from '@mui/material/Snackbar';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Alert from '@mui/material/Alert';
 import { actions, selectors } from '../slices/cardsSlice';
+import LoadingPlaceholder from './LoadingPlaceholder';
 
 export default function CardList() {
   const { t } = useTranslation();
   const dogs = useSelector(selectors.selectEntities);
+  console.log(Object.values(dogs));
   const dispatch = useDispatch();
   const [filterByLike, setFilter] = useState(false);
   const [isToastOpen, setToastOpen] = useState(false);
@@ -75,6 +77,7 @@ export default function CardList() {
           label={t('filterSwitch')}
         />
       </FormGroup>
+      {Object.values(dogs).length ? null : <LoadingPlaceholder />}
       <Grid container spacing={2} justifyContent="start">
         {dogsArray.map((dog) => (
           <Grid item xs={12} sm={6} md={4} key={dog.id}>

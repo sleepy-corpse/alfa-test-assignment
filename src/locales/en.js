@@ -10,5 +10,7 @@ export default {
     header: 'Dogs ^_^',
     subheader: 'Refresh the page to get new images and facts!',
     filterSwitch: 'Show only favourites',
+    error: 'An error occured. Click here to reload the page:',
+    reloadBtn: 'Reload',
   },
 };
