@@ -25,7 +25,6 @@ import LoadingPlaceholder from './LoadingPlaceholder';
 export default function CardList() {
   const { t } = useTranslation();
   const dogs = useSelector(selectors.selectEntities);
-  console.log(Object.values(dogs));
   const dispatch = useDispatch();
   const [filterByLike, setFilter] = useState(false);
   const [isToastOpen, setToastOpen] = useState(false);
@@ -114,7 +113,6 @@ export default function CardList() {
       <Snackbar
         open={isToastOpen}
         onClose={handleToastClose}
-        message="hello"
         autoHideDuration={4000}
       >
         <Alert onClose={handleToastClose} severity="info" sx={{ width: '100%' }}>
